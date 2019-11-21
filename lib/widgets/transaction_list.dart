@@ -11,11 +11,11 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 500,
-      child: ListView(
-          children: <Widget>[
-            ...(transactions as List<Transaction>).map((tx) {
-              return Card(
+      height: 400,
+      child: ListView.builder(
+        itemCount: transactions.length, 
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
                 elevation: 3,
                 child: Row(
                   children: <Widget>[
@@ -26,7 +26,7 @@ class TransactionList extends StatelessWidget {
                           border: Border.all(width: 5, color: Colors.purple)),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        '\$${tx.amount}',
+                        '\$${transactions[index].amount}',
                         style: TextStyle(
                           color: Colors.purple,
                           fontSize: 20,
@@ -39,12 +39,12 @@ class TransactionList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          tx.title,
+                          transactions[index].title,
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          DateFormat.yMMMd().format(tx.date),
+                          DateFormat.yMMMd().format(transactions[index].date),
                           style: TextStyle(color: Colors.grey),
                         ),
                       ],
@@ -52,8 +52,12 @@ class TransactionList extends StatelessWidget {
                   ],
                 ),
               );
-            }).toList(),
-          ],
+        },
+          // children: <Widget>[
+          //   ...(transactions as List<Transaction>).map((tx) {
+          //     return 
+          //   }).toList(),
+          // ],
       ),
     );
   }
