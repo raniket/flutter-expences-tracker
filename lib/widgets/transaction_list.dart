@@ -26,7 +26,7 @@ class TransactionList extends StatelessWidget {
                           border: Border.all(width: 5, color: Colors.purple)),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        '\$${transactions[index].amount}',
+                        '\$${transactions[index].amount.toStringAsFixed(2)}',
                         style: TextStyle(
                           color: Colors.purple,
                           fontSize: 20,
@@ -53,11 +53,6 @@ class TransactionList extends StatelessWidget {
                 ),
               );
         },
-          // children: <Widget>[
-          //   ...(transactions as List<Transaction>).map((tx) {
-          //     return 
-          //   }).toList(),
-          // ],
       ),
     );
   }

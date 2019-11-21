@@ -15,28 +15,48 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+
+  void startAddNewTransaction(BuildContext context) {
+    showModalBottomSheet(context: context, builder: (context) {
+      return Text('Something ....');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Expences Tracker')),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                child: Card(
-                  child: Text('Chart'),
-                  color: Colors.blue,
-                ),
-              ),
-              UserTransaction(),
-            ],
+      appBar: AppBar(
+        title: Text('Expences Tracker'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {},
+            tooltip: 'Creat Transaction',
           ),
-        ));
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                child: Text('Chart'),
+                color: Colors.blue,
+              ),
+            ),
+            UserTransaction(),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => startAddNewTransaction(context),
+          child: Icon(Icons.add),
+          tooltip: 'Create Transaction',
+          backgroundColor: Colors.green),
+    );
   }
 }
