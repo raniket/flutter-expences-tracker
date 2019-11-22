@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addNewTransaction;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   NewTransaction(this.addNewTransaction);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTtile = titleController.text;
@@ -14,10 +21,12 @@ class NewTransaction extends StatelessWidget {
     // Do not add a new transaction if any of the field is empty or has invalid value.
     if(enteredTtile.isEmpty || enteredAmout < 0) return;
 
-    addNewTransaction(
+    widget.addNewTransaction(
       enteredTtile,
       enteredAmout,
     );
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -42,7 +51,7 @@ class NewTransaction extends StatelessWidget {
             ),
             FlatButton(
               onPressed: submitData,
-              textColor: Colors.purple,
+              textColor: Colors.pinkAccent,
               child: Text(
                 'Add Transaction',
               ),

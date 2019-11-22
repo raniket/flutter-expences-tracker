@@ -23,12 +23,12 @@ class TransactionList extends StatelessWidget {
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       decoration: BoxDecoration(
-                          border: Border.all(width: 5, color: Colors.purple)),
+                          border: Border.all(width: 5, color: Colors.pinkAccent)),
                       padding: EdgeInsets.all(10),
                       child: Text(
                         '\$${transactions[index].amount.toStringAsFixed(2)}',
                         style: TextStyle(
-                          color: Colors.purple,
+                          color: Colors.pink,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
