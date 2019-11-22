@@ -13,10 +13,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expences Tracker',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
-        accentColor: Colors.pinkAccent,
-        fontFamily: 'Roboto',
-      ),
+          primarySwatch: Colors.pink,
+          accentColor: Colors.pinkAccent,
+          fontFamily: 'Roboto',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 18,
+                ),
+              ),
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  title: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+          )),
       home: MyHomePage(),
     );
   }
@@ -29,18 +43,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't1',
-      title: 'Jackate',
-      amount: 29.9,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Monitor',
-      amount: 99.0,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Jackate',
+    //   amount: 29.9,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Monitor',
+    //   amount: 99.0,
+    //   date: DateTime.now(),
+    // ),
   ];
 
 // Add a new transaction to the _userTransactions list.
@@ -74,7 +88,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Expences Tracker'),
+        title: Text(
+          'Expences Tracker',
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
