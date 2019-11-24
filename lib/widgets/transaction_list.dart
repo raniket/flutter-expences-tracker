@@ -16,20 +16,23 @@ class TransactionList extends StatelessWidget {
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
-                Text(
-                  'No transaction add yet!',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.pinkAccent,
+                Container(
+                  margin: EdgeInsets.only(top: 50),
+                  child: Text(
+                    'No transaction add yet!',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.pinkAccent,
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Container(
-                    width: 300,
+                    width: 150,
                     child: Image.asset(
                       'assets/images/transaction_logo.png',
                       fit: BoxFit.cover,
