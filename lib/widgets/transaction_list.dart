@@ -24,7 +24,6 @@ class TransactionList extends StatelessWidget {
                     color: Colors.pinkAccent,
                   ),
                 ),
-                // BoxFit(BoxFit.fill(hi)),
                 SizedBox(
                   height: 20,
                 ),
@@ -65,10 +64,6 @@ class TransactionList extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             transactions[index].title,
-                            // style: TextStyle(
-                            //   fontSize: 15,
-                            //   fontWeight: FontWeight.bold,
-                            // ),
                             style: Theme.of(context).textTheme.title,
                           ),
                           Text(
