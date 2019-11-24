@@ -13,18 +13,22 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-  DateTime _selectedDate = null;
+  DateTime _selectedDate;
 
   void _submitData() {
+    if (_amountController.text == null) return;
+
     final enteredTtile = _titleController.text;
     final enteredAmout = double.parse(_amountController.text);
 
     // Do not add a new transaction if any of the field is empty or has invalid value.
-    if (enteredTtile.isEmpty || enteredAmout < 0) return;
+    if (enteredTtile.isEmpty || enteredAmout < 0 || _selectedDate == null)
+      return;
 
     widget.addNewTransaction(
       enteredTtile,
       enteredAmout,
+      _selectedDate,
     );
 
     Navigator.of(context).pop();
