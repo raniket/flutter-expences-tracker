@@ -20,7 +20,7 @@ class TransactionList extends StatelessWidget {
                   'No transaction add yet!',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.w500,
                     color: Colors.pinkAccent,
                   ),
@@ -31,7 +31,6 @@ class TransactionList extends StatelessWidget {
                 Container(
                     width: 300,
                     child: Image.asset(
-                      // 'assets/images/fuchsia.png',
                       'assets/images/transaction_logo.png',
                       fit: BoxFit.cover,
                     ))
