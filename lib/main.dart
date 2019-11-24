@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'Roboto',
                   fontSize: 18,
                 ),
+                button: TextStyle(color: Colors.white),
               ),
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
@@ -60,7 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((trx) {
-      return trx.date.isAfter(DateTime.now().subtract(Duration(days: 7),),);
+      return trx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
     }).toList();
   }
 
