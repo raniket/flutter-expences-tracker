@@ -44,20 +44,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Jackate',
-    //   amount: 29.9,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Monitor',
-    //   amount: 99.0,
-    //   date: DateTime.now(),
-    // ),
-  ];
+  final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((trx) {
@@ -69,19 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-// Add a new transaction to the _userTransactions list.
-  void _addNewTransaction(String txTitle, double txAmount, DateTime chosenDate) {
-    final newTransaction = Transaction(
-      id: DateTime.now().toString(),
-      title: txTitle,
-      amount: txAmount,
-      date: chosenDate,
-    );
-    setState(() {
-      _userTransactions.add(newTransaction);
-    });
-  }
-
+  // Show UI to the use for creating a new transaction.
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
@@ -94,6 +69,26 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       },
     );
+  }
+
+  // Add a new transaction to the _userTransactions list.
+  void _addNewTransaction(String txTitle, double txAmount, DateTime chosenDate) {
+    final newTransaction = Transaction(
+      id: DateTime.now().toString(),
+      title: txTitle,
+      amount: txAmount,
+      date: chosenDate,
+    );
+    setState(() {
+      _userTransactions.add(newTransaction);
+    });
+  }
+
+  // Delete a transaction.
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((trx) => trx.id == id);
+    });
   }
 
   @override
@@ -117,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
